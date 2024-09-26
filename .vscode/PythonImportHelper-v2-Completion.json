@@ -1,0 +1,236 @@
+[
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "plotly.express",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "plotly.express",
+        "description": "plotly.express",
+        "detail": "plotly.express",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "df = pd.read_excel('vendas.xlsx')\n# Configuração da página\nst.set_page_config(page_title='Dash', layout='wide')\n# Mapeamento dos meses para abreviações\nmeses_abreviados = {\n    1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr',\n    5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug',\n    9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec'\n}\n# Adicionando a coluna de meses abreviados",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "meses_abreviados",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "meses_abreviados = {\n    1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr',\n    5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug',\n    9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec'\n}\n# Adicionando a coluna de meses abreviados\ndf['Mês Abreviado'] = df['Mês'].map(meses_abreviados)\nordem_meses= ['Jan','Feb', 'Mar' , 'Apr', 'May', 'Aug', 'Sep','Oct' ,'Nov', 'Dec']\ndf['Mês Abreviado'] = pd.Categorical(df['Mês Abreviado'], categories= ordem_meses, ordered = True)\n# Reorganização das colunas",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "df = df.drop(columns=['@dropdown'])\ncolunas = df.columns.tolist()\ncolunas.remove('Mês Abreviado')\nindice_ano = colunas.index('Ano')\ncolunas.insert(indice_ano + 1, 'Mês Abreviado')\ndf = df[colunas]\n# Sidebar - Filtros\nAno = df['Ano'].dropna().unique()\nAno_opcoes = sorted(Ano)\nAno_opcoes.insert(0, \"Todos\")  # Adiciona a opção \"Todos\" como primeira opção",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "colunas",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "colunas = df.columns.tolist()\ncolunas.remove('Mês Abreviado')\nindice_ano = colunas.index('Ano')\ncolunas.insert(indice_ano + 1, 'Mês Abreviado')\ndf = df[colunas]\n# Sidebar - Filtros\nAno = df['Ano'].dropna().unique()\nAno_opcoes = sorted(Ano)\nAno_opcoes.insert(0, \"Todos\")  # Adiciona a opção \"Todos\" como primeira opção\nAno_selecionado = st.sidebar.selectbox('Ano', Ano_opcoes)",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "indice_ano",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "indice_ano = colunas.index('Ano')\ncolunas.insert(indice_ano + 1, 'Mês Abreviado')\ndf = df[colunas]\n# Sidebar - Filtros\nAno = df['Ano'].dropna().unique()\nAno_opcoes = sorted(Ano)\nAno_opcoes.insert(0, \"Todos\")  # Adiciona a opção \"Todos\" como primeira opção\nAno_selecionado = st.sidebar.selectbox('Ano', Ano_opcoes)\nMes = df['Mês Abreviado'].dropna().unique()\nMes_opcoes = sorted(Mes)",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "df = df[colunas]\n# Sidebar - Filtros\nAno = df['Ano'].dropna().unique()\nAno_opcoes = sorted(Ano)\nAno_opcoes.insert(0, \"Todos\")  # Adiciona a opção \"Todos\" como primeira opção\nAno_selecionado = st.sidebar.selectbox('Ano', Ano_opcoes)\nMes = df['Mês Abreviado'].dropna().unique()\nMes_opcoes = sorted(Mes)\nMes_opcoes.insert(0, \"Todos\")\nMes_selecionado = st.sidebar.selectbox(\"Mês\", Mes_opcoes)",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "Ano",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "Ano = df['Ano'].dropna().unique()\nAno_opcoes = sorted(Ano)\nAno_opcoes.insert(0, \"Todos\")  # Adiciona a opção \"Todos\" como primeira opção\nAno_selecionado = st.sidebar.selectbox('Ano', Ano_opcoes)\nMes = df['Mês Abreviado'].dropna().unique()\nMes_opcoes = sorted(Mes)\nMes_opcoes.insert(0, \"Todos\")\nMes_selecionado = st.sidebar.selectbox(\"Mês\", Mes_opcoes)\n# Aplicação dos filtros\ndf_filtrado = df.copy()",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "Ano_opcoes",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "Ano_opcoes = sorted(Ano)\nAno_opcoes.insert(0, \"Todos\")  # Adiciona a opção \"Todos\" como primeira opção\nAno_selecionado = st.sidebar.selectbox('Ano', Ano_opcoes)\nMes = df['Mês Abreviado'].dropna().unique()\nMes_opcoes = sorted(Mes)\nMes_opcoes.insert(0, \"Todos\")\nMes_selecionado = st.sidebar.selectbox(\"Mês\", Mes_opcoes)\n# Aplicação dos filtros\ndf_filtrado = df.copy()\nif Ano_selecionado != \"Todos\":",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "Ano_selecionado",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "Ano_selecionado = st.sidebar.selectbox('Ano', Ano_opcoes)\nMes = df['Mês Abreviado'].dropna().unique()\nMes_opcoes = sorted(Mes)\nMes_opcoes.insert(0, \"Todos\")\nMes_selecionado = st.sidebar.selectbox(\"Mês\", Mes_opcoes)\n# Aplicação dos filtros\ndf_filtrado = df.copy()\nif Ano_selecionado != \"Todos\":\n    df_filtrado = df_filtrado[df_filtrado['Ano'] == Ano_selecionado]\nif Mes_selecionado != \"Todos\":",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "Mes",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "Mes = df['Mês Abreviado'].dropna().unique()\nMes_opcoes = sorted(Mes)\nMes_opcoes.insert(0, \"Todos\")\nMes_selecionado = st.sidebar.selectbox(\"Mês\", Mes_opcoes)\n# Aplicação dos filtros\ndf_filtrado = df.copy()\nif Ano_selecionado != \"Todos\":\n    df_filtrado = df_filtrado[df_filtrado['Ano'] == Ano_selecionado]\nif Mes_selecionado != \"Todos\":\n    df_filtrado = df_filtrado[df_filtrado['Mês Abreviado'] == Mes_selecionado]",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "Mes_opcoes",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "Mes_opcoes = sorted(Mes)\nMes_opcoes.insert(0, \"Todos\")\nMes_selecionado = st.sidebar.selectbox(\"Mês\", Mes_opcoes)\n# Aplicação dos filtros\ndf_filtrado = df.copy()\nif Ano_selecionado != \"Todos\":\n    df_filtrado = df_filtrado[df_filtrado['Ano'] == Ano_selecionado]\nif Mes_selecionado != \"Todos\":\n    df_filtrado = df_filtrado[df_filtrado['Mês Abreviado'] == Mes_selecionado]\n# Agrupamentos e gráficos",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "Mes_selecionado",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "Mes_selecionado = st.sidebar.selectbox(\"Mês\", Mes_opcoes)\n# Aplicação dos filtros\ndf_filtrado = df.copy()\nif Ano_selecionado != \"Todos\":\n    df_filtrado = df_filtrado[df_filtrado['Ano'] == Ano_selecionado]\nif Mes_selecionado != \"Todos\":\n    df_filtrado = df_filtrado[df_filtrado['Mês Abreviado'] == Mes_selecionado]\n# Agrupamentos e gráficos\nfaturamento_marca = df_filtrado.groupby('Marca', as_index=False)['Faturamento'].sum()\nfaturamento_tipo_marca = df_filtrado.groupby(['Tipo', 'Marca'], as_index=False)['Faturamento'].sum()",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "df_filtrado",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "df_filtrado = df.copy()\nif Ano_selecionado != \"Todos\":\n    df_filtrado = df_filtrado[df_filtrado['Ano'] == Ano_selecionado]\nif Mes_selecionado != \"Todos\":\n    df_filtrado = df_filtrado[df_filtrado['Mês Abreviado'] == Mes_selecionado]\n# Agrupamentos e gráficos\nfaturamento_marca = df_filtrado.groupby('Marca', as_index=False)['Faturamento'].sum()\nfaturamento_tipo_marca = df_filtrado.groupby(['Tipo', 'Marca'], as_index=False)['Faturamento'].sum()\nfaturamento_tipo = df_filtrado.groupby('Tipo', as_index=False)['Faturamento'].sum()\nfaturamento_total = df_filtrado.groupby(['Ano' , 'Marca'])['Lucro'].sum().reset_index()",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "faturamento_marca",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "faturamento_marca = df_filtrado.groupby('Marca', as_index=False)['Faturamento'].sum()\nfaturamento_tipo_marca = df_filtrado.groupby(['Tipo', 'Marca'], as_index=False)['Faturamento'].sum()\nfaturamento_tipo = df_filtrado.groupby('Tipo', as_index=False)['Faturamento'].sum()\nfaturamento_total = df_filtrado.groupby(['Ano' , 'Marca'])['Lucro'].sum().reset_index()\nlucro_mensal = df_filtrado.groupby(['Mês Abreviado', 'Tipo'])['Lucro'].sum().reset_index()\nfaturamento_total['Ano'] = faturamento_total['Ano'].astype(str)\nfig_faturamento = px.bar(faturamento_marca, x='Marca', y='Faturamento',\n                         title='Faturamento por Marca',\n                         labels={'Marca': 'Marca', 'Faturamento': 'Faturamento'},\n                         color='Marca')",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "faturamento_tipo_marca",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "faturamento_tipo_marca = df_filtrado.groupby(['Tipo', 'Marca'], as_index=False)['Faturamento'].sum()\nfaturamento_tipo = df_filtrado.groupby('Tipo', as_index=False)['Faturamento'].sum()\nfaturamento_total = df_filtrado.groupby(['Ano' , 'Marca'])['Lucro'].sum().reset_index()\nlucro_mensal = df_filtrado.groupby(['Mês Abreviado', 'Tipo'])['Lucro'].sum().reset_index()\nfaturamento_total['Ano'] = faturamento_total['Ano'].astype(str)\nfig_faturamento = px.bar(faturamento_marca, x='Marca', y='Faturamento',\n                         title='Faturamento por Marca',\n                         labels={'Marca': 'Marca', 'Faturamento': 'Faturamento'},\n                         color='Marca')\nfig_faturamento_Tipo = px.bar(faturamento_tipo_marca, x='Tipo', y='Faturamento',",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "faturamento_tipo",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "faturamento_tipo = df_filtrado.groupby('Tipo', as_index=False)['Faturamento'].sum()\nfaturamento_total = df_filtrado.groupby(['Ano' , 'Marca'])['Lucro'].sum().reset_index()\nlucro_mensal = df_filtrado.groupby(['Mês Abreviado', 'Tipo'])['Lucro'].sum().reset_index()\nfaturamento_total['Ano'] = faturamento_total['Ano'].astype(str)\nfig_faturamento = px.bar(faturamento_marca, x='Marca', y='Faturamento',\n                         title='Faturamento por Marca',\n                         labels={'Marca': 'Marca', 'Faturamento': 'Faturamento'},\n                         color='Marca')\nfig_faturamento_Tipo = px.bar(faturamento_tipo_marca, x='Tipo', y='Faturamento',\n                              title='Faturamento por Tipo de Produto',",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "faturamento_total",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "faturamento_total = df_filtrado.groupby(['Ano' , 'Marca'])['Lucro'].sum().reset_index()\nlucro_mensal = df_filtrado.groupby(['Mês Abreviado', 'Tipo'])['Lucro'].sum().reset_index()\nfaturamento_total['Ano'] = faturamento_total['Ano'].astype(str)\nfig_faturamento = px.bar(faturamento_marca, x='Marca', y='Faturamento',\n                         title='Faturamento por Marca',\n                         labels={'Marca': 'Marca', 'Faturamento': 'Faturamento'},\n                         color='Marca')\nfig_faturamento_Tipo = px.bar(faturamento_tipo_marca, x='Tipo', y='Faturamento',\n                              title='Faturamento por Tipo de Produto',\n                              color='Marca')",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "lucro_mensal",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "lucro_mensal = df_filtrado.groupby(['Mês Abreviado', 'Tipo'])['Lucro'].sum().reset_index()\nfaturamento_total['Ano'] = faturamento_total['Ano'].astype(str)\nfig_faturamento = px.bar(faturamento_marca, x='Marca', y='Faturamento',\n                         title='Faturamento por Marca',\n                         labels={'Marca': 'Marca', 'Faturamento': 'Faturamento'},\n                         color='Marca')\nfig_faturamento_Tipo = px.bar(faturamento_tipo_marca, x='Tipo', y='Faturamento',\n                              title='Faturamento por Tipo de Produto',\n                              color='Marca')\nfig_faturamento_total = px.line(faturamento_total, x= 'Ano', y='Lucro',",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "faturamento_total['Ano']",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "faturamento_total['Ano'] = faturamento_total['Ano'].astype(str)\nfig_faturamento = px.bar(faturamento_marca, x='Marca', y='Faturamento',\n                         title='Faturamento por Marca',\n                         labels={'Marca': 'Marca', 'Faturamento': 'Faturamento'},\n                         color='Marca')\nfig_faturamento_Tipo = px.bar(faturamento_tipo_marca, x='Tipo', y='Faturamento',\n                              title='Faturamento por Tipo de Produto',\n                              color='Marca')\nfig_faturamento_total = px.line(faturamento_total, x= 'Ano', y='Lucro',\n                               color='Marca',",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faturamento",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "fig_faturamento = px.bar(faturamento_marca, x='Marca', y='Faturamento',\n                         title='Faturamento por Marca',\n                         labels={'Marca': 'Marca', 'Faturamento': 'Faturamento'},\n                         color='Marca')\nfig_faturamento_Tipo = px.bar(faturamento_tipo_marca, x='Tipo', y='Faturamento',\n                              title='Faturamento por Tipo de Produto',\n                              color='Marca')\nfig_faturamento_total = px.line(faturamento_total, x= 'Ano', y='Lucro',\n                               color='Marca',\n                               title='Lucro por Marca')",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faturamento_Tipo",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "fig_faturamento_Tipo = px.bar(faturamento_tipo_marca, x='Tipo', y='Faturamento',\n                              title='Faturamento por Tipo de Produto',\n                              color='Marca')\nfig_faturamento_total = px.line(faturamento_total, x= 'Ano', y='Lucro',\n                               color='Marca',\n                               title='Lucro por Marca')\nfig_lucro_mensal = px.pie(lucro_mensal, names='Tipo' , values='Lucro',\n                          title= 'Lucro mensal por peça ',\n                          hole=0.2,\n                          color = 'Tipo')",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "fig_faturamento_total",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "fig_faturamento_total = px.line(faturamento_total, x= 'Ano', y='Lucro',\n                               color='Marca',\n                               title='Lucro por Marca')\nfig_lucro_mensal = px.pie(lucro_mensal, names='Tipo' , values='Lucro',\n                          title= 'Lucro mensal por peça ',\n                          hole=0.2,\n                          color = 'Tipo')\nfig_faturamento.update_layout(\n    showlegend=False\n)",
+        "detail": "vendas",
+        "documentation": {}
+    },
+    {
+        "label": "fig_lucro_mensal",
+        "kind": 5,
+        "importPath": "vendas",
+        "description": "vendas",
+        "peekOfCode": "fig_lucro_mensal = px.pie(lucro_mensal, names='Tipo' , values='Lucro',\n                          title= 'Lucro mensal por peça ',\n                          hole=0.2,\n                          color = 'Tipo')\nfig_faturamento.update_layout(\n    showlegend=False\n)\nfig_faturamento_total.update_layout(\n    xaxis_title='Ano',\n    yaxis_title='Lucro',",
+        "detail": "vendas",
+        "documentation": {}
+    }
+]
